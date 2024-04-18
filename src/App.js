@@ -14,12 +14,8 @@ function App() {
       setIsLoading(true);
 
       try {
-        console.log(
-          `http://ec2-3-25-103-163.ap-southeast-2.compute.amazonaws.com/goals`
-        );
-        const response = await fetch(
-          `http://ec2-3-25-103-163.ap-southeast-2.compute.amazonaws.com/goals`
-        );
+        console.log(`http://54.66.35.172/goals`);
+        const response = await fetch(`http://54.66.35.172/goals`);
 
         const resData = await response.json();
         console.log({ resData });
@@ -45,18 +41,15 @@ function App() {
     setIsLoading(true);
 
     try {
-      const response = await fetch(
-        `http://ec2-3-25-103-163.ap-southeast-2.compute.amazonaws.com/goals`,
-        {
-          method: "POST",
-          body: JSON.stringify({
-            text: goalText,
-          }),
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      const response = await fetch(`http://54.66.35.172/goals`, {
+        method: "POST",
+        body: JSON.stringify({
+          text: goalText,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
 
       const resData = await response.json();
       console.log({ resData });
@@ -88,13 +81,9 @@ function App() {
     setIsLoading(true);
 
     try {
-      const response = await fetch(
-        `http://ec2-3-25-103-163.ap-southeast-2.compute.amazonaws.com/goals/` +
-          goalId,
-        {
-          method: "DELETE",
-        }
-      );
+      const response = await fetch(`http://54.66.35.172/goals/` + goalId, {
+        method: "DELETE",
+      });
 
       const resData = await response.json();
       console.log({ resData });
