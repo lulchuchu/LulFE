@@ -19,14 +19,14 @@ pipeline {
       steps {
         sshagent(credentials: ['ssh-cred']) {
             sh """
-                ssh -o StrictHostKeyChecking=no ec2-user@ec2-13-211-125-93.ap-southeast-2.compute.amazonaws.com '
+                ssh -o StrictHostKeyChecking=no ec2-user@ec2-54-206-104-220.ap-southeast-2.compute.amazonaws.com '
                     if docker ps | grep -q lulfe; then
                       docker stop lulfe
                     else
                       echo "Container is not running."
                     fi                    
                     docker pull tienanhknock/lulfrontend
-                    docker run --name lulfe -d -p 3000:3000 --rm -e REACT_APP_BE_HOST=ec2-13-211-125-93.ap-southeast-2.compute.amazonaws.com tienanhknock/lulfrontend
+                    docker run --name lulfe -d -p 3000:80 --rm -e REACT_APP_BE_HOST=ec2-54-206-104-220.ap-southeast-2.compute.amazonaws.com tienanhknock/lulfrontend
                 '
             """
         }
