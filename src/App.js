@@ -14,9 +14,11 @@ function App() {
       setIsLoading(true);
 
       try {
-        console.log(`http://${process.env.REACT_APP_BE_HOST}/goals`);
+        console.log(
+          `http://ec2-3-25-103-163.ap-southeast-2.compute.amazonaws.com/goals`
+        );
         const response = await fetch(
-          `http://${process.env.REACT_APP_BE_HOST}/goals`
+          `http://ec2-3-25-103-163.ap-southeast-2.compute.amazonaws.com/goals`
         );
 
         const resData = await response.json();
@@ -44,7 +46,7 @@ function App() {
 
     try {
       const response = await fetch(
-        `http://${process.env.REACT_APP_BE_HOST}/goals`,
+        `http://ec2-3-25-103-163.ap-southeast-2.compute.amazonaws.com/goals`,
         {
           method: "POST",
           body: JSON.stringify({
@@ -87,7 +89,8 @@ function App() {
 
     try {
       const response = await fetch(
-        `http://${process.env.REACT_APP_BE_HOST}/goals/` + goalId,
+        `http://ec2-3-25-103-163.ap-southeast-2.compute.amazonaws.com/goals/` +
+          goalId,
         {
           method: "DELETE",
         }
