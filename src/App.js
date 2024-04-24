@@ -12,7 +12,7 @@ function App() {
     useEffect(function () {
         async function fetchData() {
             setIsLoading(true);
-            console.log("host", process.env.REACT_APP_BE_HOST);
+            console.log("hosttt", process.env.REACT_APP_BE_HOST);
 
             try {
                 const url =
