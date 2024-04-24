@@ -15,10 +15,10 @@ function App() {
 
             try {
                 console.log(
-                    `http://ec2-3-106-114-209.ap-southeast-2.compute.amazonaws.com/goals`
+                    `http://ec2-13-211-50-89.ap-southeast-2.compute.amazonaws.com/goals`
                 );
                 const response = await fetch(
-                    `http://ec2-3-106-114-209.ap-southeast-2.compute.amazonaws.com/goals`
+                    `http://ec2-13-211-50-89.ap-southeast-2.compute.amazonaws.com/goals`
                 );
 
                 const resData = await response.json();
@@ -48,7 +48,7 @@ function App() {
 
         try {
             const response = await fetch(
-                `http://ec2-3-106-114-209.ap-southeast-2.compute.amazonaws.com/goals`,
+                `http://ec2-13-211-50-89.ap-southeast-2.compute.amazonaws.com/goals`,
                 {
                     method: "POST",
                     body: JSON.stringify({
@@ -91,7 +91,7 @@ function App() {
 
         try {
             const response = await fetch(
-                `http://ec2-3-106-114-209.ap-southeast-2.compute.amazonaws.com/goals/` +
+                `http://ec2-13-211-50-89.ap-southeast-2.compute.amazonaws.com/goals/` +
                     goalId,
                 {
                     method: "DELETE",
