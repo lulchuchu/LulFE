@@ -14,12 +14,11 @@ function App() {
             setIsLoading(true);
 
             try {
-                console.log(
-                    `http://ec2-13-211-50-89.ap-southeast-2.compute.amazonaws.com/goals`
-                );
-                const response = await fetch(
-                    `http://ec2-13-211-50-89.ap-southeast-2.compute.amazonaws.com/goals`
-                );
+                const url =
+                    process.env.REACT_APP_BE_HOST === "localhost"
+                        ? "localhost"
+                        : "ec2-13-211-50-89.ap-southeast-2.compute.amazonaws.com";
+                const response = await fetch(`http://${url}/goals`);
 
                 const resData = await response.json();
                 console.log({ resData });
@@ -47,18 +46,19 @@ function App() {
         setIsLoading(true);
 
         try {
-            const response = await fetch(
-                `http://ec2-13-211-50-89.ap-southeast-2.compute.amazonaws.com/goals`,
-                {
-                    method: "POST",
-                    body: JSON.stringify({
-                        text: goalText,
-                    }),
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                }
-            );
+            const url =
+                process.env.REACT_APP_BE_HOST === "localhost"
+                    ? "localhost"
+                    : "ec2-13-211-50-89.ap-southeast-2.compute.amazonaws.com";
+            const response = await fetch(`http://${url}/goals`, {
+                method: "POST",
+                body: JSON.stringify({
+                    text: goalText,
+                }),
+                headers: {
+                    "Content-Type": "application/json",
+                },
+            });
 
             const resData = await response.json();
             console.log({ resData });
@@ -90,13 +90,13 @@ function App() {
         setIsLoading(true);
 
         try {
-            const response = await fetch(
-                `http://ec2-13-211-50-89.ap-southeast-2.compute.amazonaws.com/goals/` +
-                    goalId,
-                {
-                    method: "DELETE",
-                }
-            );
+            const url =
+                process.env.REACT_APP_BE_HOST === "localhost"
+                    ? "localhost"
+                    : "ec2-13-211-50-89.ap-southeast-2.compute.amazonaws.com";
+            const response = await fetch(`http://${url}/goals/` + goalId, {
+                method: "DELETE",
+            });
 
             const resData = await response.json();
             console.log({ resData });
