@@ -123,8 +123,6 @@ function App() {
 
     return (
         <div>
-            <div>CCCCCC</div>
-            <div>Ahihi</div>
             {error && <ErrorAlert errorText={error} />}
             <GoalInput onAddGoal={addGoalHandler} />
             {!isLoading && (
