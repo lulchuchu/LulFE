@@ -4,14 +4,14 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        sh 'docker build -f Dockerfile.prod -t $DOCKER_IMAGE_FE .'
+        sh 'docker build -f Dockerfile.prod -t tienanhknock/lulfrontend .'
       }
     }
     stage('Deploy') {
       steps {
         withCredentials([usernamePassword(credentialsId: "${DOCKER_REGISTRY_CREDS}", passwordVariable: 'DOCKER_PASSWORD', usernameVariable: 'DOCKER_USERNAME')]) {
           sh "echo \$DOCKER_PASSWORD | docker login -u \$DOCKER_USERNAME --password-stdin docker.io"
-          sh 'docker push $DOCKER_IMAGE_FE'
+          sh 'docker push tienanhknock/lulfrontend:latest'
         }
       }
     }
@@ -25,7 +25,7 @@ pipeline {
                     else
                       echo "Container is not running."
                     fi                    
-                    docker pull tienanhknock/lulfrontend
+                    docker pull tienanhknock/lulfrontend:latest
                     docker run --name lulfe -d -p 3000:80 --rm -e REACT_APP_BE_HOST=3.107.50.218 tienanhknock/lulfrontend
                 '
             """
